@@ -41,7 +41,7 @@
   /* 共通レイアウト ================================ */
   body {
     color: rgb(90, 90, 90);
-    background-color: #f5fc9d;
+    background-color: #42bacf;
     margin: 0;
     min-height: 1vh;
   }
@@ -74,13 +74,13 @@
   .header-logo {
     float: left;
     padding-left: 20px;
-    color: rgb(90, 90, 90);
+    color: white;
     font-size: 22px;
     line-height: 64px;
   }
 
   .header-logo a{
-    color: rgb(90, 90, 90);
+    color: white;
     font-size: 22px;
   }
 
@@ -93,14 +93,14 @@
     float: left;
     line-height: 64px;
     font-size: 13px;
-    color: rgb(90, 90, 90);
+    color:  white;
     padding-left: 15px;
   }
 
   .header-menus a {
     float: left;
     font-size: 13px;
-    color: rgb(90, 90, 90);
+    color: white;
   }
 
   .header-menus .fa {
@@ -111,7 +111,7 @@
     padding: 0 20px;
     float: left;
     line-height: 64px;
-    color: rgb(90, 90, 90);
+    color: white;
     margin: 0;
     font-size: 13px;
   }
@@ -125,11 +125,12 @@
     width: 100%;
     height: auto;
     min-height: 100%;
-    color: rgb(90, 90, 90);
-    background-color: #f5fc9d;
+    color: white;
+    background-color: #42bacf;
     background-repeat: no-repeat;
     background-position: center 50%;
     background-size: cover;
+    background-image: url("/top.jpg");
   }
 
   .top-message {
@@ -145,13 +146,13 @@
   }
 
   .top-main p {
-    font-size: 24px;
+    font-size: 30px;
   }
 
   /* about ================================ */
   .about-main {
     padding: 180px 8% 0;
-    color: rgb(90, 90, 90);
+    color: white;
   }
 
   .about-main h2 {
