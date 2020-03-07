@@ -9,6 +9,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <div class="header-logo">
+      <%= link_to("D2C Correct", "/") %>
+    </div>
+    <ul class="header-menus">
+      <li>
+        <%= link_to("D2C Correctとは", "/about") %>
+      </li>
+    </ul>
+  </header>
+
   <body>
     <%= yield %>
   </body>
