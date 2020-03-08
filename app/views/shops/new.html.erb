@@ -3,13 +3,15 @@
     <h1 class="form-heading">登録する</h1>
     <div class="form">
       <div class="form-body">
-        <p>サイト名 [必須]</p>
-        <input name="name" placeholder="D2Correct">
-        <p>サイトURL [必須]</p>
-        <input name="url" placeholder="https://www.d2correct.com/">
-        <p>アイコン</p>
-        <input type="file">
-        <input type="submit" value="登録">
+        <%= form_tag("/shops/create") do %>
+            <p>サイト名 [必須]</p>
+            <input name="name" placeholder="D2Correct">
+            <p>サイトURL [必須]</p>
+            <input name="url" placeholder="https://www.d2correct.com/">
+            <p>アイコン</p>
+            <input name="icon_name" type="file">
+            <input type="submit" value="登録">
+        <% end %>
       </div>
     </div>
   </div>
