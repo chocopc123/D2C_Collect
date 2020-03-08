@@ -1,7 +1,9 @@
 <div class="main shops-index">
   <div class="container">
-    <div class="shops-index-item">
-      登録サイト一覧
-    </div>
+    <% @shops.each do |shop| %>
+        <div class="shops-index-item">
+            <%= shop.name %>
+        </div>
+    <% end %>
   </div>
 </div>
