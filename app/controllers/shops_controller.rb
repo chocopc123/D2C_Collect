@@ -6,6 +6,10 @@ class ShopsController < ApplicationController
   def new
   end
 
+  def show
+    @shop = Shop.find_by(id: params[:id])
+  end
+
   def create
     @shop = Shop.new(name: params[:name], url: params[:url], icon_name: "default_icon.jpg")
     if @shop.save

@@ -2,7 +2,7 @@
   <div class="container">
     <% @shops.each do |shop| %>
         <div class="shops-index-item">
-            <%= shop.name %>
+            <%= link_to(shop.name, "/shops/#{shop.id}") %>
         </div>
     <% end %>
   </div>
