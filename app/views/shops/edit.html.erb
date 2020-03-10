@@ -1,0 +1,18 @@
+<div class="main shops-edit">
+  <div class="container">
+    <div class="form-heading">ショップ情報の編集</div>
+    <div class="form shops-form">
+      <div class="form-body">
+        <%= form_tag("/shops/#{@shop.id}/update", {multipart: true}) do %>
+            <p>ショップ名</p>
+            <input name="name" placeholder="D2Correct" value=<%= @shop.name %>>
+            <p>ショップURL</p>
+            <input name="url" placeholder="https://www.d2correct.com/" value=<%= @shop.url %>>
+            <p>アイコン</p>
+            <input name="icon" type="file">
+            <input type="submit" value="登録">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
