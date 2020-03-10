@@ -7,6 +7,8 @@
     background-color: white;
     overflow: hidden;
     box-shadow: 0 2px 6px #c1ced7;
+    display: table;
+    width: 100%;
   }
 
   .shop-left img {
@@ -31,10 +33,11 @@
   }
 
   .shop-right {
-    float: left;
     width: 90%;
     padding-left: 25px;
     text-align: left;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   /* shops/show ================================ */

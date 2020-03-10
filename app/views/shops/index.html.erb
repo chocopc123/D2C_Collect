@@ -2,7 +2,12 @@
   <div class="container">
     <% @shops.each do |shop| %>
         <div class="shops-index-item">
-            <%= link_to(shop.name, "/shops/#{shop.id}") %>
+            <div class="shop-left">
+              <img src="<%= "/shop_icons/#{shop.icon_name}" %>">
+            </div>
+            <div class="shop-right">
+              <%= link_to(shop.name, "/shops/#{shop.id}") %>
+            </div>
         </div>
     <% end %>
   </div>
