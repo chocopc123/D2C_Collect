@@ -47,4 +47,11 @@ class ShopsController < ApplicationController
       render("shops/edit")
     end
   end
+
+  def destroy
+    @shop = Shop.find_by(id: params[:id])
+    @shop.destroy
+    flash[:notice] = "ショップを削除しました"
+    redirect_to("/shops/index")
+  end
 end

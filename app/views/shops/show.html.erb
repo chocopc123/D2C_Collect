@@ -6,6 +6,7 @@
         <%= link_to("公式サイト", @shop.url)%>
       </p>
       <%= link_to("編集", "/shops/#{@shop.id}/edit") %>
+      <%= link_to("削除", "/shops/#{@shop.id}/destroy", {method: "post"}) %>
     </div>
   </div>
 </div>
