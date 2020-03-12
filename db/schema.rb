@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_08_083640) do
+ActiveRecord::Schema.define(version: 2020_03_12_074736) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2020_03_08_083640) do
     t.datetime "updated_at", null: false
     t.string "url"
     t.string "icon_name"
+    t.string "email"
+    t.string "password_digest"
   end
 
 end
