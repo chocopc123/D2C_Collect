@@ -62,6 +62,9 @@ class ShopsController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to("/shops/#{@shop.id}")
     else
+      @email = params[:email]
+      @password = params[:password]
+      @error_message = "メールアドレスまたはパスワードが間違っています"
       render("shops/login_form")
     end
   end

@@ -4,10 +4,13 @@
     <div class="form shops-form">
       <div class="form-body">
         <%= form_tag("/shops/login") do %>
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
           <p>メールアドレス</p>
-          <input name="email">
+          <input name="email" value=<%= @email %>>
           <p>パスワード</p>
-          <input type="password" name="password">
+          <input type="password" name="password" value=<%= @password %>>
           <input type="submit" value="ログイン">
         <% end %>
       </div>
