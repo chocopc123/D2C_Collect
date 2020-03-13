@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "shops/login" => "shops#login"
   get "shops/:id" => "shops#show"
   get "shops/:id/edit" => "shops#edit"
+  get "shops/:id/password_reset" => "shops#password_reset"
   post "shops/:id/update" => "shops#update"
   post "shops/:id/destroy" => "shops#destroy"
   get "owner" => "home#owner"

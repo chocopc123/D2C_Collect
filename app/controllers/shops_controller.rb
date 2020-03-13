@@ -35,6 +35,7 @@ class ShopsController < ApplicationController
     @shop = Shop.find_by(id: params[:id])
     @shop.name = params[:name]
     @shop.url = params[:url]
+    @shop.email = params[:email]
     if @shop.save
       if params[:icon]
         @shop.icon_name = "#{@shop.id}.jpg"
@@ -58,7 +59,7 @@ class ShopsController < ApplicationController
 
   def login
     @shop = Shop.find_by(email: params[:email])
-    if @shop && @user.authenticate(params[:password])
+    if @shop && @shop.authenticate(params[:password])
       session[:shop_id] = @shop.id
       flash[:notice] = "ログインしました"
       redirect_to("/shops/#{@shop.id}")
@@ -67,6 +68,26 @@ class ShopsController < ApplicationController
       @password = params[:password]
       @error_message = "メールアドレスまたはパスワードが間違っています"
       render("shops/login_form")
+    end
+  end
+
+  def password_reset
+    @shop = Shop.new
+  end
+
+  def password_update
+    @shop = Shop.find_by(id: @current_shop.id)
+    if @shop.authenticate(params[:current_password])
+      @shop.password = params[:new_password]
+      if @shop.save
+        flash[:notice] = "パスワードを再設定しました"
+        redirect_to("/shops/#{@shop.id}")
+      else
+        render("/shops/password_reset")
+      end
+    else
+      @error_message = "パスワードが間違っています"
+      render("/shops/password_reset")
     end
   end
 end
