@@ -5,9 +5,9 @@
       <div class="form-body">
         <%= form_tag("/shops/login") do %>
           <p>メールアドレス</p>
-          <input>
+          <input name="email">
           <p>パスワード</p>
-          <input type="password">
+          <input type="password" name="password">
           <input type="submit" value="ログイン">
         <% end %>
       </div>
