@@ -54,4 +54,15 @@ class ShopsController < ApplicationController
     flash[:notice] = "ショップを削除しました"
     redirect_to("/shops/index")
   end
+
+  def login
+    @shop = Shop.find_by(email: params[:email])
+    if @shop && @user.authenticate(params[:password])
+      session[:shop_id] = @shop.id
+      flash[:notice] = "ログインしました"
+      redirect_to("/shops/#{@shop.id}")
+    else
+      render("shops/login_form")
+    end
+  end
 end
