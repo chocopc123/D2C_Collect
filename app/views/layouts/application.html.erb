@@ -23,6 +23,11 @@
       <li>
         <%= link_to("サイト運営者向けページ", "/owner") %>
       </li>
+      <% if @current_shop %>
+        <li>
+          <%= link_to("MyPage", "/shops/#{@current_shop.id}") %>
+        </li>
+      <% end %>
     </ul>
   </header>
 

@@ -77,7 +77,7 @@ class ShopsController < ApplicationController
 
   def password_update
     @shop = Shop.find_by(id: @current_shop.id)
-    if @shop.authenticate(params[:current_password])
+    if params[:new_password] && @shop.authenticate(params[:current_password])
       @shop.password = params[:new_password]
       if @shop.save
         flash[:notice] = "パスワードを再設定しました"
@@ -86,7 +86,7 @@ class ShopsController < ApplicationController
         render("/shops/password_reset")
       end
     else
-      @error_message = "パスワードが間違っています"
+      @error_message = "パスワードが間違っているか、空です"
       render("/shops/password_reset")
     end
   end
