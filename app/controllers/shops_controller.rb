@@ -20,6 +20,7 @@ class ShopsController < ApplicationController
         File.binwrite("public/shop_icons/#{@shop.icon_name}", icon.read)
         @shop.save
       end
+      session[:shop_id] = @shop.id
       flash[:notice] = "登録完了しました"
       redirect_to("/shops/index")
     else
@@ -89,5 +90,11 @@ class ShopsController < ApplicationController
       @error_message = "パスワードが間違っているか、空です"
       render("/shops/password_reset")
     end
+  end
+
+  def logout
+    session[:shop_id] = nil
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/shops/index")
   end
 end

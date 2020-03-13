@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "shops/index" => "shops#index"
   get "shops/login_form" => "shops#login_form"
   post "shops/login" => "shops#login"
+  post "/logout" => "shops#logout"
   get "shops/:id" => "shops#show"
   get "shops/:id/edit" => "shops#edit"
   get "shops/:id/password_reset" => "shops#password_reset"
