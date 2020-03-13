@@ -4,6 +4,7 @@ class ShopsController < ApplicationController
   end
 
   def new
+    @shop = Shop.new
   end
 
   def show
@@ -11,7 +12,7 @@ class ShopsController < ApplicationController
   end
 
   def create
-    @shop = Shop.new(name: params[:name], url: params[:url], icon_name: "default_icon.jpg")
+    @shop = Shop.new(name: params[:name], url: params[:url], email: params[:email], password: params[:password], icon_name: "default_icon.jpg")
     if @shop.save
       if params[:icon]
         @shop.icon_name = "#{@shop.id}.jpg"

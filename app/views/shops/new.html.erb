@@ -4,13 +4,22 @@
     <div class="form">
       <div class="form-body">
         <%= form_tag("/shops/create", {multipart: true}) do %>
-            <p>ショップ名 [必須]</p>
-            <input name="name" placeholder="D2Correct">
-            <p>ショップURL [必須]</p>
-            <input name="url" placeholder="https://www.d2correct.com/">
-            <p>アイコン</p>
-            <input name="icon" type="file">
-            <input type="submit" value="登録">
+          <% @shop.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            <div>
+          <% end %>
+          <p>ショップ名 <span>[必須]</span></p>
+          <input name="name" placeholder="D2Correct" value="<%= @shop.name %>">
+          <p>ショップURL <span>[必須]</span></p>
+          <input name="url" placeholder="https://www.d2correct.com/" value="<%= @shop.url %>">
+          <p>メールアドレス <span>[必須][ログイン用]</span></p>
+          <input name="email" placeholder="d2correct@gmail.com" value="<%= @shop.email %>">
+          <p>パスワード　<span>[必須][ログイン用]</span></p>
+          <input name="password" type="password" value="<%= @shop.password %>">
+          <p>アイコン</p>
+          <input name="icon" type="file">
+          <input type="submit" value="登録">
         <% end %>
       </div>
     </div>
