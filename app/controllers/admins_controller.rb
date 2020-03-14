@@ -16,4 +16,10 @@ class AdminsController < ApplicationController
       render("admins/login_form")
     end
   end
+
+  def logout
+    session[:admin] = nil
+    flash[:notice] = "管理者権限からログアウトしました"
+    redirect_to("/shops/index")
+  end
 end
