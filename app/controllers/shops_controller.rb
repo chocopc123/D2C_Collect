@@ -1,4 +1,6 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update, :logout]}
+
   def index
     @shops = Shop.all.order(id: :desc)
   end
