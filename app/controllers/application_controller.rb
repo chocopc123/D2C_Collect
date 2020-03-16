@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_shop
-        if @current_shop == nil
+        if @current_shop == nil && session[:admin] == nil
             flash[:notice] = "ログインが必要です"
             redirect_to("/shops/login_form")
         end

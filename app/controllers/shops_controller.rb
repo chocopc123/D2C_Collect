@@ -102,7 +102,7 @@ class ShopsController < ApplicationController
   end
 
   def ensure_correct_shop
-    if @current_shop.id != params[:id].to_i
+    if @current_shop && @current_shop.id != params[:id].to_i
       flash[:notice] = "権限がありません"
       redirect_to("/shops/index")
     end
