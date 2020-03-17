@@ -107,4 +107,9 @@ class ShopsController < ApplicationController
       redirect_to("/shops/index")
     end
   end
+
+  def search
+    @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
+    render("/shops/index")
+  end
 end
