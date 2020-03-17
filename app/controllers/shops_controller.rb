@@ -8,6 +8,7 @@ class ShopsController < ApplicationController
     else
       @shops = Shop.all.order(id: :desc)
     end
+    @result_amount = @shops.count
   end
 
   def new

@@ -2,16 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* shops/index ================================ */
-  .search-form {
-    display: table;
-    width: 750px;
-    margin: 0 auto;
-    color: black;
+  .search-container {
+    margin: 0px auto;
+    max-width: 600px;
     text-align: center;
   }
 
+  .search-form {
+    width: 100%;
+    color: black;
+  }
+
   .search-form input {
-    width: 60%;
     border: 1px solid #d8dadf;
     padding: 10px;
     font-size: 16px;
@@ -19,7 +21,8 @@
     border-radius: 2px;
   }
 
-  .search-form input[type=".search-form"] {
+  .search-form input[type="search"] {
+    width: 80%;
     display: inline-block;
   }
 
@@ -29,7 +32,7 @@
     color: white;
     cursor: pointer;
     font-weight: 300;
-    width: 120px;
+    width: 15%;
     border-radius: 2px;
     margin-top: 8px;
     margin-bottom: 0;
@@ -39,6 +42,15 @@
     content: '';
     display: table;
     clear: both;
+  }
+
+  .result-amount {
+    padding-right: 10px;
+    float: right;
+  }
+
+  .result-amount-error {
+    padding-top: 30px;
   }
 
   .shops-index-item {

@@ -1,8 +1,19 @@
 <div class="main shops-index">
-  <div class="search-form">
-    <%= form_tag("/shops/index") do %>
-      <input type="search" placeholder="ショップ名で検索" name="keyword">
-      <input type="submit" value="検索">
+  <div class="search-container">
+    <div class="search-form">
+      <%= form_tag("/shops/index") do %>
+        <input type="search" placeholder="ショップ名で検索" name="keyword">
+        <input type="submit" value="検索">
+      <% end %>
+    </div>
+    <% if @result_amount == 0 %>
+      <div class="result-amount-error">
+        <p>検索キーワードがあてはまるショップは見つかりませんでした</p>
+      </div>
+    <% else %>
+      <div class="result-amount">
+        <p><%= @result_amount %>件</p>
+      </div>
     <% end %>
   </div>
   <div class="container">
