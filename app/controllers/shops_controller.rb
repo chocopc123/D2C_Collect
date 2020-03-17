@@ -3,7 +3,11 @@ class ShopsController < ApplicationController
   before_action :ensure_correct_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update]}
 
   def index
-    @shops = Shop.all.order(id: :desc)
+    if params[:keyword]
+      @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
+    else
+      @shops = Shop.all.order(id: :desc)
+    end
   end
 
   def new
@@ -106,10 +110,5 @@ class ShopsController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to("/shops/index")
     end
-  end
-
-  def search
-    @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
-    render("/shops/index")
   end
 end
