@@ -19,10 +19,10 @@
           <%= link_to("D2C List", "/shops/index") %>
         </li>
         <li>
-          <%= link_to("MyPage", "/shops/#{@current_shop.id}") %>
-        </li>
-        <li>
           <%= link_to("ログアウト", "/logout", {method: "post"}) %>
+        </li>
+        <li class="mypage-icon">
+          <%= link_to image_tag("/shop_icons/#{@current_shop.icon_name}"), "/shops/#{@current_shop.id}" %>
         </li>
       <% elsif session[:admin] %>
         <li>
