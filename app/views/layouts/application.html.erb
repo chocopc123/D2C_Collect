@@ -14,26 +14,32 @@
       <%= link_to("D2Correct", "/") %>
     </div>
     <ul class="header-menus">
-      <li>
-        <%= link_to("D2Correctとは", "/about") %>
-      </li>
-      <li>
-        <%= link_to("D2C List", "/shops/index") %>
-      </li>
-      <li>
-        <%= link_to("サイト運営者向けページ", "/owner") %>
-      </li>
       <% if @current_shop %>
+        <li>
+          <%= link_to("D2C List", "/shops/index") %>
+        </li>
         <li>
           <%= link_to("MyPage", "/shops/#{@current_shop.id}") %>
         </li>
         <li>
           <%= link_to("ログアウト", "/logout", {method: "post"}) %>
         </li>
-      <% end %>
-      <% if session[:admin] %>
+      <% elsif session[:admin] %>
+        <li>
+          <%= link_to("D2C List", "/shops/index") %>
+        </li>
         <li>
           <%= link_to("Adminログアウト", "/admins/logout", {method: "post"}) %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to("D2Correctとは", "/about") %>
+        </li>
+        <li>
+          <%= link_to("D2C List", "/shops/index") %>
+        </li>
+        <li>
+          <%= link_to("サイト運営者向けページ", "/owner") %>
         </li>
       <% end %>
     </ul>
