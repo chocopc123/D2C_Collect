@@ -1,0 +1,13 @@
+<div class="main shops-add_genre">
+  <div class="container">
+    <h1 class="form-heading">ジャンルを追加する</h1>
+    <div class="form">
+      <div class="form-body">
+        <%= form_tag("/shops/create") do %>
+          <input type="radio" name="name" value="/">終了
+          <input type="submit" value="次へ">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

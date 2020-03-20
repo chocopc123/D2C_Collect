@@ -112,4 +112,7 @@ class ShopsController < ApplicationController
       redirect_to("/shops/index")
     end
   end
+
+  def add_genre
+  end
 end

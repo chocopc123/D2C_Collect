@@ -177,3 +177,14 @@
   .shops-new span {
     color: red;
   }
+
+  /* shops/add_genre ================================ */
+  .genre-redio input[type="radio"] {
+    display: inline-block;
+    width: 10%;
+    border: 1px solid #d8dadf;
+    padding: 10px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border-radius: 2px;
+  }

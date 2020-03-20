@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post "shops/:id/password_update" => "shops#password_update"
   post "shops/:id/update" => "shops#update"
   post "shops/:id/destroy" => "shops#destroy"
+  get "shops/:id/add_genre" => "shops#add_genre"
+  post "shops/:id/add_genre" => "shops#add_genre"
   post "admins/logout" => "admins#logout"
   post "admins/login" => "admins#login"
   get "admins/login" => "admins#login_form"
