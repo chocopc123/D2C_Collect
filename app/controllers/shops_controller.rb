@@ -114,6 +114,11 @@ class ShopsController < ApplicationController
   end
 
   def add_genre
-    
+    if params[:genre]
+      @genre = Genre.find_by(id: params[:genre])
+      @genres = Genre.where(genre_id: @genre.genre_id, floor: 2)
+    else
+      @genres = Genre.where(floor: 1)
+    end
   end
 end

@@ -3,8 +3,10 @@
     <h1 class="form-heading">ジャンルを追加する</h1>
     <div class="form">
       <div class="form-body">
-        <%= form_tag("/shops/create") do %>
-          <input type="radio" name="name" value="/">終了
+        <%= form_tag("/shops/#{params[:id]}/add_genre") do %>
+          <% @genres.each do |genre| %>
+            <input type="radio" name="genre" value="<%= genre.id %>"><%= genre.name %>
+          <% end %>
           <input type="submit" value="次へ">
         <% end %>
       </div>
