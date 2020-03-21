@@ -114,5 +114,6 @@ class ShopsController < ApplicationController
   end
 
   def add_genre
+    
   end
 end
