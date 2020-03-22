@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_050233) do
+ActiveRecord::Schema.define(version: 2020_03_22_135007) do
 
   create_table "admins", force: :cascade do |t|
     t.string "admin_id"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 2020_03_20_050233) do
     t.string "icon_name"
     t.string "email"
     t.string "password_digest"
+  end
+
+  create_table "shops_genres", force: :cascade do |t|
+    t.integer "shop_id"
+    t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
