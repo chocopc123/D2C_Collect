@@ -127,4 +127,16 @@ class ShopsController < ApplicationController
       @genres = Genre.where(floor: 1)
     end
   end
+
+  def remove_genre
+    @shop_genres = ShopsGenre.where(shop_id: params[:id])
+  end
+
+  def genre_destroy
+    params[:genre].each do |shop_genre|
+      @destroy_genre = ShopsGenre.find_by(id: shop_genre.id)
+      @destroy_genre.destroy
+    end
+    redirect_to("/shops/#{params[:id]}")
+  end
 end

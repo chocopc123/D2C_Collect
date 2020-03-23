@@ -1,0 +1,15 @@
+<div class="main shops-remove_genre">
+  <div class="container">
+    <h1 class="form-heading">ジャンルを削除する</h1>
+    <div class="form">
+      <div class="form-body">
+        <%= form_tag("/shops/#{params[:id]}/genre_destroy") do %>
+          <% @shop_genres.each do |shop_genre| %>
+            <input type="checkbox" name="genre" value="<%= shop_genre.id %>"><%= shop_genre.genre %>
+          <% end %>
+          <input type="submit" value="次へ">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
