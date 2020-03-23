@@ -116,6 +116,11 @@ class ShopsController < ApplicationController
   def add_genre
     if params[:genre]
       @genre = Genre.find_by(id: params[:genre])
+      if @genre.floor == 2
+        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name)
+        @shop_genre.save
+        redirect_to("/shops/#{params[:id]}")
+      end
       @genres = Genre.where(genre_id: @genre.genre_id, floor: 2)
     else
       @genres = Genre.where(floor: 1)
