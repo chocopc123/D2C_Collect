@@ -17,6 +17,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find_by(id: params[:id])
+    @shop_genres = ShopsGenre.where(shop_id: @shop.id)
   end
 
   def create
