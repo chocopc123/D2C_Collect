@@ -133,10 +133,8 @@ class ShopsController < ApplicationController
   end
 
   def genre_destroy
-    params[:genre].each do |shop_genre|
-      @destroy_genre = ShopsGenre.find_by(id: shop_genre.id)
-      @destroy_genre.destroy
-    end
+    @destroy_genre = ShopsGenre.find_by(id: params[:genre])
+    @destroy_genre.destroy
     redirect_to("/shops/#{params[:id]}")
   end
 end

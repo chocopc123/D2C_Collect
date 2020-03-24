@@ -5,7 +5,7 @@
       <div class="form-body">
         <%= form_tag("/shops/#{params[:id]}/genre_destroy") do %>
           <% @shop_genres.each do |shop_genre| %>
-            <input type="checkbox" name="genre" value="<%= shop_genre.id %>"><%= shop_genre.genre %>
+            <input type="radio" name="genre" value="<%= shop_genre.id %>"><%= shop_genre.genre %>
           <% end %>
           <input type="submit" value="次へ">
         <% end %>
