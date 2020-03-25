@@ -13,11 +13,10 @@ class ShopsController < ApplicationController
     if params[:genre]
       @genre = Genre.find_by(id: params[:genre])
       if @genre.floor == 2
-        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name)
-        @shop_genre.save
-        redirect_to("/shops/#{params[:id]}")
+        session[:search_genre_id] = @genre.id
       end
       @genres = Genre.where(genre_id: @genre.genre_id, floor: 2)
+      session[:search_genre_id] = @genre.id
     else
       @genres = Genre.where(floor: 1)
     end
@@ -130,7 +129,7 @@ class ShopsController < ApplicationController
     if params[:genre]
       @genre = Genre.find_by(id: params[:genre])
       if @genre.floor == 2
-        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name)
+        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name, genre_id: @genre.id)
         @shop_genre.save
         redirect_to("/shops/#{params[:id]}")
       end
