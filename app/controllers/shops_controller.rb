@@ -148,4 +148,9 @@ class ShopsController < ApplicationController
     @destroy_genre.destroy
     redirect_to("/shops/#{params[:id]}")
   end
+
+  def search_genre_reset
+    session[:search_genre_id] = nil
+    redirect_to("/shops/index")
+  end
 end

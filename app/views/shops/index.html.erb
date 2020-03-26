@@ -18,8 +18,9 @@
   </div>
   <div class="genre-container">
     <% if session[:search_genre_id] %>
-      <% oh = Genre.find_by(id: session[:search_genre_id]) %>
-      絞り込みジャンル: <%= oh.name %>
+      <% now_genre = Genre.find_by(id: session[:search_genre_id]) %>
+      <p>絞り込みジャンル: <%= now_genre.name %></p>
+      <p><%= link_to("ジャンルリセット", "/shops/search_genre_reset", {method: "post"}) %></p>
     <% end %>
     <%= form_tag("/shops/index") do %>
       <% @genres.each do |genre| %>
