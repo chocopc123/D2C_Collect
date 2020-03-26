@@ -17,6 +17,10 @@
     <% end %>
   </div>
   <div class="genre-container">
+    <% if session[:search_genre_id] %>
+      <% oh = Genre.find_by(id: session[:search_genre_id]) %>
+      絞り込みジャンル: <%= oh.name %>
+    <% end %>
     <%= form_tag("/shops/index") do %>
       <% @genres.each do |genre| %>
         <input type="radio" name="genre" value="<%= genre.id %>"><%= genre.name %>
