@@ -17,9 +17,8 @@
     <% end %>
   </div>
   <div class="genre-container">
-    <% if session[:search_genre_id] %>
-      <% now_genre = Genre.find_by(id: session[:search_genre_id]) %>
-      <p>絞り込みジャンル: <%= now_genre.name %></p>
+    <% if @search_genre %>
+      <p>絞り込みジャンル: <%= @search_genre.name %></p>
       <p><%= link_to("ジャンルリセット", "/shops/search_genre_reset", {method: "post"}) %></p>
     <% end %>
     <%= form_tag("/shops/index") do %>
@@ -30,15 +29,17 @@
     <% end %>
   </div>
   <div class="container">
-    <% @shops.each do |shop| %>
-        <div class="shops-index-item">
-            <div class="shop-left">
-              <img src="<%= "/shop_icons/#{shop.icon_name}" %>">
-            </div>
-            <div class="shop-right">
-              <%= link_to(shop.name, "/shops/#{shop.id}") %>
-            </div>
-        </div>
+    <% if @shops %>
+      <% @shops.each do |shop| %>
+          <div class="shops-index-item">
+              <div class="shop-left">
+                <img src="<%= "/shop_icons/#{shop.icon_name}" %>">
+              </div>
+              <div class="shop-right">
+                <%= link_to(shop.name, "/shops/#{shop.id}") %>
+              </div>
+          </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,20 +1,32 @@
 class ShopsController < ApplicationController
   before_action :authenticate_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update, :logout]}
   before_action :ensure_correct_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update]}
+  before_action :set_search_genre
 
   def index
-    if params[:keyword]
-      @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
+    if @search_genre
+      if params[:keyword]
+        @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
+      else
+        shops_id = ShopsGenre.where(genre_id: @search_genre.id)
+        if @shops_id
+          @shops = Shop.where(id: (shops_id.to_a)[0].shop_id ).order(id: :desc)
+        end
+      end
     else
-      @shops = Shop.all.order(id: :desc)
+      if params[:keyword]
+        @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
+      else
+        @shops = Shop.all.order(id: :desc)
+      end
     end
-    @result_amount = @shops.count
+    if @shops
+      @result_amount = @shops.count
+    end
 
+    # session[:search_genre_id]セット
     if params[:genre]
       @genre = Genre.find_by(id: params[:genre])
-      if @genre.floor == 2
-        session[:search_genre_id] = @genre.id
-      end
       @genres = Genre.where(genre_id: @genre.genre_id, floor: 2)
       session[:search_genre_id] = @genre.id
     else
@@ -152,5 +164,9 @@ class ShopsController < ApplicationController
   def search_genre_reset
     session[:search_genre_id] = nil
     redirect_to("/shops/index")
+  end
+
+  def set_search_genre
+    @search_genre = Genre.find_by(id: session[:search_genre_id])
   end
 end
