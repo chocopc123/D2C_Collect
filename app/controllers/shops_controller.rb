@@ -25,13 +25,24 @@ class ShopsController < ApplicationController
     end
 
     # session[:search_genre_id]セット
-    if params[:genre]
-      @genre = Genre.find_by(id: params[:genre])
-      @genres = Genre.where(genre_id: @genre.genre_id, floor: 2)
-      session[:search_genre_id] = @genre.id
+    if @search_genre
+      @genres = Genre.where(genre_id: @search_genre.genre_id, floor: 2)
     else
       @genres = Genre.where(floor: 1)
     end
+    if params[:genre]
+      @genre = Genre.find_by(id: params[:genre])
+      session[:search_genre_id] = @genre.id
+      redirect_to("/shops/index")
+    end
+    #if params[:genre]
+    #  @genre = Genre.find_by(id: params[:genre])
+    #  @genres = Genre.where(genre_id: @genre.genre_id, floor: 2)
+    #  session[:search_genre_id] = @genre.id
+    #  redirect_to("/shops/index")
+    #else
+    #  @genres = Genre.where(floor: 1)
+    #end
   end
 
   def new
