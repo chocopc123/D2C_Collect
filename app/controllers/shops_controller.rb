@@ -4,12 +4,23 @@ class ShopsController < ApplicationController
   before_action :set_search_genre
 
   def index
+    # session[:search_genre_id]セット
+    if @search_genre
+      @genres = Genre.where(genre_id: @search_genre.genre_id, floor: 2)
+    else
+      @genres = Genre.where(floor: 1)
+    end
+    if params[:genre]
+      @genre = Genre.find_by(id: params[:genre])
+      session[:search_genre_id] = @genre.id
+      redirect_to("/shops/index")
+    end
     if @search_genre
       if params[:keyword]
         @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
       else
-        shops_id = ShopsGenre.where(genre_id: @search_genre.id)
-        if @shops_id
+        shops_id = ShopsGenre.where(genre_id: @search_genre.genre_id)
+        if shops_id
           @shops = Shop.where(id: (shops_id.to_a)[0].shop_id ).order(id: :desc)
         end
       end
@@ -23,26 +34,6 @@ class ShopsController < ApplicationController
     if @shops
       @result_amount = @shops.count
     end
-
-    # session[:search_genre_id]セット
-    if @search_genre
-      @genres = Genre.where(genre_id: @search_genre.genre_id, floor: 2)
-    else
-      @genres = Genre.where(floor: 1)
-    end
-    if params[:genre]
-      @genre = Genre.find_by(id: params[:genre])
-      session[:search_genre_id] = @genre.id
-      redirect_to("/shops/index")
-    end
-    #if params[:genre]
-    #  @genre = Genre.find_by(id: params[:genre])
-    #  @genres = Genre.where(genre_id: @genre.genre_id, floor: 2)
-    #  session[:search_genre_id] = @genre.id
-    #  redirect_to("/shops/index")
-    #else
-    #  @genres = Genre.where(floor: 1)
-    #end
   end
 
   def new
@@ -152,7 +143,7 @@ class ShopsController < ApplicationController
     if params[:genre]
       @genre = Genre.find_by(id: params[:genre])
       if @genre.floor == 2
-        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name, genre_id: @genre.id)
+        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name, genre_id: @genre.genre_id)
         @shop_genre.save
         redirect_to("/shops/#{params[:id]}")
       end
