@@ -21,10 +21,19 @@ class ShopsController < ApplicationController
       else
         shops_id = ShopsGenre.where(genre_id: @search_genre.genre_id)
         if (shops_id.to_a)[0] != nil
-          (shops_id.to_a).each do |shop_id|
-            @shops = Shop.where(id: (shops_id.to_a)[0].shop_id ).order(id: :desc)
-          end
+          @shops = []
+        #  @shops = Shop.where(id: (shops_id.to_a)[0].shop_id )
+          @shops[0] = Shop.where(id: (shops_id.to_a)[0] )
+          @shops[1] = Shop.where(id: (shops_id.to_a)[1] )
         end
+        #if (shops_id.to_a)[0] != nil
+        #  @shops = []
+        #  i = 0
+        #  (shops_id.to_a).each do |shops_id|
+        #    @shops[i] = Shop.where(id: shops_id.shop_id )
+        #  end
+        #end
+
       end
     else
       if params[:keyword]
