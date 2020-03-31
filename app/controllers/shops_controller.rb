@@ -20,8 +20,10 @@ class ShopsController < ApplicationController
         @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
       else
         shops_id = ShopsGenre.where(genre_id: @search_genre.genre_id)
-        if shops_id
-          @shops = Shop.where(id: (shops_id.to_a)[0].shop_id ).order(id: :desc)
+        if (shops_id.to_a)[0] != nil
+          (shops_id.to_a).each do |shop_id|
+            @shops = Shop.where(id: (shops_id.to_a)[0].shop_id ).order(id: :desc)
+          end
         end
       end
     else
