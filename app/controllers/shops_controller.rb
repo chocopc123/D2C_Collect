@@ -22,10 +22,8 @@ class ShopsController < ApplicationController
         @hit_shops = ShopsGenre.where(genre_id: @search_genre.genre_id)
         if @hit_shops != nil
           @shops = []
-          i = 0
           @hit_shops.each do |hit_shop|
-            @shops[i] = Shop.find_by(id: hit_shop.shop_id )
-            i += 1
+            @shops.insert(0, Shop.find_by(id: hit_shop.shop_id ) )
           end
         end
       end
