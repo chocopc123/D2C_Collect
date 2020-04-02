@@ -19,24 +19,15 @@ class ShopsController < ApplicationController
       if params[:keyword]
         @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
       else
-        shops_id = ShopsGenre.where(genre_id: @search_genre.genre_id)
-        #if (shops_id.to_a)[0] != nil
-        #  @shops = []
-        #  @shops
-
-        #  @shops = Shop.where(id: (shops_id.to_a)[0].shop_id )
-        #  @shops[0] = Shop.where(id: (shops_id.to_a)[0] )
-        #  @shops[1] = Shop.where(id: (shops_id.to_a)[1] )
-        #end
-        if (shops_id.to_a)[0] != nil
+        @hit_shops = ShopsGenre.where(genre_id: @search_genre.genre_id)
+        if @hit_shops != nil
           @shops = []
           i = 0
-          (shops_id.to_a).each do |shops_id|
-            @shopsx = Shop.where(id: shops_id.shop_id )
-            @shops + [@shopsx]
+          @hit_shops.each do |hit_shop|
+            @shops[i] = Shop.find_by(id: hit_shop.shop_id )
+            i += 1
           end
         end
-
       end
     else
       if params[:keyword]
