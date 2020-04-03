@@ -19,7 +19,11 @@ class ShopsController < ApplicationController
       if params[:keyword]
         @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
       else
-        @hit_shops = ShopsGenre.where(genre_id: @search_genre.genre_id)
+        if @search_genre.floor == 1
+          @hit_shops = ShopsGenre.where(genre_id: @search_genre.genre_id)
+        elsif @search_genre.floor == 2
+          @hit_shops = ShopsGenre.where(genre_column_id: @search_genre.id)
+        end
         if @hit_shops != nil
           @shops = []
           @hit_shops.each do |hit_shop|
@@ -146,7 +150,7 @@ class ShopsController < ApplicationController
     if params[:genre]
       @genre = Genre.find_by(id: params[:genre])
       if @genre.floor == 2
-        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name, genre_id: @genre.genre_id)
+        @shop_genre = ShopsGenre.new(shop_id: params[:id], genre: @genre.name, genre_id: @genre.genre_id, genre_column_id: @genre.id)
         @shop_genre.save
         redirect_to("/shops/#{params[:id]}")
       end
