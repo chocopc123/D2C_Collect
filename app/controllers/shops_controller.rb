@@ -3,6 +3,8 @@ class ShopsController < ApplicationController
   before_action :ensure_correct_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update]}
   before_action :set_search_genre
 
+  protect_from_forgery except: :index
+
   def index
     # session[:search_genre_id]セット
     if @search_genre
@@ -21,7 +23,7 @@ class ShopsController < ApplicationController
       else
         if @search_genre.floor == 1
           @hit_shops = ShopsGenre.where(genre_id: @search_genre.genre_id)
-        elsif @search_genre.floor == 2
+        else
           @hit_shops = ShopsGenre.where(genre_column_id: @search_genre.id)
         end
         if @hit_shops != nil
