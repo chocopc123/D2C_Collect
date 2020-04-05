@@ -22,7 +22,13 @@ class ShopsController < ApplicationController
         @shops = Shop.where("name Like ?", "%#{params[:keyword]}%").order(id: :desc)
       else
         if @search_genre.floor == 1
-          @hit_shops = ShopsGenre.where(genre_id: @search_genre.genre_id)
+          @hit_duplication_shops = ShopsGenre.where(genre_id: @search_genre.genre_id)
+          @hit_duplication_shops_ids = @hit_duplication_shops.pluck(:shop_id)
+          @hit_shops_ids = @hit_duplication_shops_ids.uniq
+          @hit_shops = []
+          @hit_shops_ids.each do |hit_shops_id|
+            @hit_shops.insert(0, ShopsGenre.find_by(shop_id: hit_shops_id))
+          end
         else
           @hit_shops = ShopsGenre.where(genre_column_id: @search_genre.id)
         end
