@@ -8,11 +8,11 @@
               <%= message %>
             <% end %>
             <p>ショップ名</p>
-            <input name="name" placeholder="D2Correct" value=<%= @shop.name %>>
+            <input name="name" placeholder="D2Collect" value=<%= @shop.name %>>
             <p>ショップURL</p>
-            <input name="url" placeholder="https://www.d2correct.com/" value=<%= @shop.url %>>
+            <input name="url" placeholder="https://www.d2collect.com/" value=<%= @shop.url %>>
             <p>メールアドレス</p>
-            <input name="email" placeholder="d2correct@gmail.com" value="<%= @shop.email %>">
+            <input name="email" placeholder="d2collect@gmail.com" value="<%= @shop.email %>">
             <p>アイコン</p>
             <input name="icon" type="file">
             <%= link_to("パスワードのリセット", "/shops/#{@shop.id}/password_reset") %>
