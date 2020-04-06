@@ -22,7 +22,7 @@ test:
 
 production:
   adapter: postgresql
-  database: d2collect_production
-  username: d2collect
-  password: d2collect
+  database: d1unmijl8kp78n
+  username: obazocikvnlyiu
+  password: 9d90fb49d2c296f92304233abce7a5bd2f29950574bf8f57a3c814227f489a06
   encoding: utf8
