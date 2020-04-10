@@ -210,6 +210,40 @@
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
   }
 
+  /* overview================================ */
+  .overview-main {
+    padding: 100px 8% 0;
+    color: white;
+  }
+
+  .overview-main h2 {
+    padding-top: 50px;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .overview-main p {
+    font-weight: 200;
+    font-size: 20px;
+  }
+
+  .overview-main {
+    width: 84%;
+  }
+
+  .overview-main li{
+    list-style: disc;
+    font-weight: 200;
+    font-size: 20px;
+  }
+  .overview-link a{
+    font-weight: 200;
+    font-size: 20px;
+    color: white;
+    text-decoration: underline;
+  }
+
   /* フォーム================================ */
   .form {
     max-width: 600px;

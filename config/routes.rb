@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "admins/logout" => "admins#logout"
   post "admins/login" => "admins#login"
   get "admins/login" => "admins#login_form"
+  get "overview" => "home#overview"
   get "owner" => "home#owner"
   get "about" => "home#about"
   get "/" => "home#top"
