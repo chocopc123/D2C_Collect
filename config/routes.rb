@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/login', to: 'devise/sessions#new'
     post 'users/login', to: 'devise/sessions#create'
+    delete 'users/logout', to: 'devise/sessions#destroy'
   end
   post "shops/create" => "shops#create"
   get "shops/new" => "shops#new"
