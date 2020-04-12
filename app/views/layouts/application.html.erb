@@ -31,12 +31,26 @@
         <li>
           <%= link_to("Adminログアウト", "/admins/logout", {method: "post"}) %>
         </li>
+      <% elsif user_signed_in? %>
+        <li>
+          <%= link_to("D2C List", "/shops/index") %>
+        </li>
+        <li>
+          <%= link_to("ログアウト", "/users/logout", {method: "delete"}) %>
+        </li>
+        <li><%= current_user.email %></li>
       <% else %>
         <li>
           <%= link_to("D2Collectとは", "/about") %>
         </li>
         <li>
           <%= link_to("D2C List", "/shops/index") %>
+        </li>
+        <li>
+          <%= link_to("新規登録", "/users/sign_up") %>
+        </li>
+        <li>
+          <%= link_to("ログイン", "/users/login") %>
         </li>
         <li>
           <%= link_to("ショップ運営者向けページ", "/owner") %>
