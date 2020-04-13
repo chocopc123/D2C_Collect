@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  devise_scope :user do
-    get 'users/login', to: 'devise/sessions#new'
-    post 'users/login', to: 'devise/sessions#create'
-  end
   post "shops/create" => "shops#create"
   get "shops/new" => "shops#new"
   get "shops/index" => "shops#index"
