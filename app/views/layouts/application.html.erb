@@ -24,6 +24,10 @@
         <li class="mypage-icon">
           <%= link_to image_tag("/shop_icons/#{@current_shop.icon_name}"), "/shops/#{@current_shop.id}" %>
         </li>
+      <% elsif @current_user %>
+        <li>
+          <%= link_to("D2C List", "/shops/index") %>
+        </li>
       <% elsif session[:admin] %>
         <li>
           <%= link_to("D2C List", "/shops/index") %>
@@ -37,6 +41,9 @@
         </li>
         <li>
           <%= link_to("D2C List", "/shops/index") %>
+        </li>
+        <li>
+          <%= link_to("新規登録", "/users/new") %>
         </li>
         <li>
           <%= link_to("ショップ運営者向けページ", "/owner") %>

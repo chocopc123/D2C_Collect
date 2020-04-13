@@ -4,11 +4,20 @@ class ApplicationController < ActionController::Base
     def set_current_shop
         @current_shop = Shop.find_by(id: session[:shop_id])
     end
+    def set_current_user
+        @current_user = user.find_by(id: session[:user_id])
+    end
 
     def authenticate_shop
         if @current_shop == nil && session[:admin] == nil
             flash[:notice] = "ログインが必要です"
             redirect_to("/shops/login_form")
+        end
+    end
+    def authenticate_user
+        if @current_user == nil && session[:admin] == nil
+            flash[:notice] = "ログインが必要です"
+            redirect_to("/users/login_form")
         end
     end
 end

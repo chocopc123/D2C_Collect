@@ -1,0 +1,25 @@
+<div class="main users-new">
+  <div class="container">
+    <h1 class="form-heading">登録する</h1>
+    <div class="form">
+      <div class="form-body">
+        <%= form_tag("/users/create", {multipart: true}) do %>
+          <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            <div>
+          <% end %>
+          <p>ユーザー名 <span>[必須]</span></p>
+          <input name="username" placeholder="D2Collect" value="<%= @user.username %>">
+          <p>メールアドレス <span>[必須][ログイン用]</span></p>
+          <input name="email" placeholder="d2collect@gmail.com" value="<%= @user.email %>">
+          <p>パスワード　<span>[必須][ログイン用]</span></p>
+          <input name="password" type="password" value="<%= @user.password %>">
+          <p>アイコン</p>
+          <input name="icon" type="file">
+          <input type="submit" value="登録">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
