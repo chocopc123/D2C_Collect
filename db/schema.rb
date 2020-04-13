@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_145248) do
+ActiveRecord::Schema.define(version: 2020_04_13_090056) do
 
   create_table "admins", force: :cascade do |t|
     t.string "admin_id"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2020_04_03_145248) do
     t.datetime "updated_at", null: false
     t.integer "genre_id"
     t.integer "genre_column_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.string "icon_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
