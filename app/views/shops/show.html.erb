@@ -19,5 +19,21 @@
         <%= link_to("ジャンル削除", "/shops/#{params[:id]}/remove_genre") %>
       <% end %>
     </div>
+    <div class="review">
+      <div class="review-form">
+        <%= form_with :url => {controller:"shops", action:"add_review"} do |f| %>
+          <%= f.text_area :content, :size=>"40x5" %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div class="review-show">
+        <% @reviews.each do |review| %>
+          <li>
+            <%= review.user_id %>
+            <%= review.content %>
+          </li>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

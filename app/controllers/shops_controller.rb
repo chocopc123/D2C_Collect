@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   before_action :authenticate_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update, :logout]}
   before_action :ensure_correct_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update]}
+  before_action :authenticate_user, {only: [:add_review]}
   before_action :set_search_genre
 
   protect_from_forgery except: :index
@@ -58,6 +59,7 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find_by(id: params[:id])
     @shop_genres = ShopsGenre.where(shop_id: @shop.id)
+    @reviews = Review.where(shop_id: @shop.id)
   end
 
   def create
@@ -185,5 +187,13 @@ class ShopsController < ApplicationController
 
   def set_search_genre
     @search_genre = Genre.find_by(id: session[:search_genre_id])
+  end
+
+  def add_review
+    @review = Review.new(user_id: @current_user.id, shop_id: params[:id], content: params[:content])
+    if @review.save
+      flash[:notice] = "レビューを投稿しました。"
+    end
+    redirect_to("/shops/#{params[:id]}")
   end
 end

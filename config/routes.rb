@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "shops/:id/add_genre" => "shops#add_genre"
   post "shops/:id/add_genre" => "shops#add_genre"
   get "shops/:id/remove_genre" => "shops#remove_genre"
+  post "shops/:id/add_review" => "shops#add_review"
   post "shops/:id/genre_destroy" => "shops#genre_destroy"
   post "admins/logout" => "admins#logout"
   post "admins/login" => "admins#login"
