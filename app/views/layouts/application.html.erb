@@ -34,6 +34,9 @@
         <li>
           <%= link_to(@current_user.username, "/users/#{@current_user.id}") %>
         </li>
+        <li class="mypage-icon">
+          <%= link_to image_tag("/user_icons/#{@current_user.icon_name}"), "/users/#{@current_user.id}" %>
+        </li>
       <% elsif session[:admin] %>
         <li>
           <%= link_to("D2C List", "/shops/index") %>
