@@ -35,6 +35,12 @@ class UsersController < ApplicationController
       end
     end
 
+    def logout
+      session[:user_id] = nil
+      flash[:notice] = "ログアウトしました"
+      redirect_to("/shops/index")
+    end
+
     def show
       @user = User.find_by(id: params[:id])
     end
