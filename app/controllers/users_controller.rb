@@ -15,7 +15,7 @@ class UsersController < ApplicationController
           end
           session[:user_id] = @user.id
           flash[:notice] = "登録完了しました"
-          redirect_to("/shops/index")
+          redirect_to("/users/index")
         else
           render("users/new")
         end
@@ -33,5 +33,9 @@ class UsersController < ApplicationController
         @error_message = "メールアドレスまたはパスワードが間違っています"
         render("users/login_form")
       end
+    end
+
+    def show
+      @user = User.find_by(id: params[:id])
     end
 end

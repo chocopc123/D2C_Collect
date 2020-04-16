@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "users/login_form" => "users#login_form"
   post "users/create" => "users#create"
   get "users/new" => "users#new"
+  get "users/:id" => "users#show"
   post "shops/create" => "shops#create"
   get "shops/new" => "shops#new"
   get "shops/index" => "shops#index"

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
         @current_shop = Shop.find_by(id: session[:shop_id])
     end
     def set_current_user
-        @current_user = user.find_by(id: session[:user_id])
+        @current_user = User.find_by(id: session[:user_id])
     end
 
     def authenticate_shop

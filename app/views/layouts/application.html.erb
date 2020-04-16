@@ -28,6 +28,9 @@
         <li>
           <%= link_to("D2C List", "/shops/index") %>
         </li>
+        <li>
+          <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+        </li>
       <% elsif session[:admin] %>
         <li>
           <%= link_to("D2C List", "/shops/index") %>
