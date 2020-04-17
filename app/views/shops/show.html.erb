@@ -22,15 +22,20 @@
     <div class="review">
       <div class="review-form">
         <%= form_with :url => {controller:"shops", action:"add_review"} do |f| %>
+          <h2>レビュー投稿</h2>
           <%= f.text_area :content, :size=>"40x5" %>
           <%= f.submit %>
         <% end %>
       </div>
       <div class="review-show">
+        <h2>レビュー一覧</h2>
         <% @reviews.each do |review| %>
           <li>
-            <%= review.user_id %>
+            <%= User.find_by(id:review.user_id).username + ":" %>
             <%= review.content %>
+            <% if @current_user && @current_user.id == review.user_id || session[:admin] %>
+              <%= link_to("削除", "/shops/#{@shop.id}/#{review.id}/remove_review", {method: "post"}) %>
+            <% end %>
           </li>
         <% end %>
       </div>

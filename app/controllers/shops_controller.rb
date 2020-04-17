@@ -196,4 +196,11 @@ class ShopsController < ApplicationController
     end
     redirect_to("/shops/#{params[:id]}")
   end
+
+  def remove_review
+    @destroy_review = Review.find_by(id: params[:review_id])
+    @destroy_review.destroy
+    flash[:notice] = "レビューを削除しました"
+    redirect_to("/shops/#{params[:id]}")
+  end
 end
