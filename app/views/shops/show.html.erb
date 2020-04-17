@@ -34,7 +34,7 @@
             <%= User.find_by(id:review.user_id).username + ":" %>
             <%= review.content %>
             <% if @current_user && @current_user.id == review.user_id || session[:admin] %>
-              <%= link_to("削除", "/shops/#{@shop.id}/#{review.id}/remove_review", {method: "post"}) %>
+              <%= link_to("削除", "/shops/#{@shop.id}/#{review.user_id}/#{review.id}/remove_review", {method: "post"}) %>
             <% end %>
           </li>
         <% end %>

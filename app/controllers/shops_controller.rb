@@ -1,7 +1,8 @@
 class ShopsController < ApplicationController
   before_action :authenticate_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update, :logout]}
   before_action :ensure_correct_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update]}
-  before_action :authenticate_user, {only: [:add_review]}
+  before_action :authenticate_user, {only: [:add_review, :remove_review]}
+  before_action :ensure_correct_user, {only: [:remove_review]}
   before_action :set_search_genre
 
   protect_from_forgery except: :index
@@ -151,6 +152,13 @@ class ShopsController < ApplicationController
 
   def ensure_correct_shop
     if @current_shop && @current_shop.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/shops/index")
+    end
+  end
+
+  def ensure_correct_user
+    if @current_user && @current_user.id != params[:user_id].to_i
       flash[:notice] = "権限がありません"
       redirect_to("/shops/index")
     end
