@@ -10,13 +10,14 @@
             <div>
           <% end %>
           <p>ショップ名 <span>[必須]</span></p>
-          <input name="name" placeholder="D2Collect" value="<%= @shop.name %>">
+          <input name="name" value="<%= @shop.name %>">
           <p>ショップURL <span>[必須]</span></p>
-          <input name="url" placeholder="https://www.d2collect.com/" value="<%= @shop.url %>">
+          <input name="url" value="<%= @shop.url %>">
           <p>メールアドレス <span>[必須][ログイン用]</span></p>
-          <input name="email" placeholder="d2collect@gmail.com" value="<%= @shop.email %>">
+          <input name="email" value="<%= @shop.email %>">
           <p>パスワード　<span>[必須][ログイン用]</span></p>
           <input name="password" type="password" value="<%= @shop.password %>">
+          <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %>
           <p>アイコン</p>
           <input name="icon" type="file">
           <input type="submit" value="登録">
