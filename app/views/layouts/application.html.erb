@@ -9,7 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
+  <% if controller.action_name == "top" %>
+    <header class="header-top">
+  <% else %>
+    <header>
+  <% end %>
     <div class="header-logo">
       <%= link_to("D2Collect", "/") %>
     </div>

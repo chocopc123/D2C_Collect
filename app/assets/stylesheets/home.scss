@@ -78,6 +78,14 @@
     width: 100%;
   }
 
+  .header-top {
+    height: 64px;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: rgba(27, 27, 27, 0.8);
+  }
+
   .header-logo {
     float: left;
     padding-left: 20px;
