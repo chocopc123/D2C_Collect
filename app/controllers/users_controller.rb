@@ -53,4 +53,47 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
   end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.username = params[:name]
+    @user.email = params[:email]
+    if @user.save
+      if params[:icon]
+        @user.icon_name = "#{@user.id}.jpg"
+        icon = params[:icon]
+        File.binwrite("public/user_icons/#{@user.icon_name}", icon.read)
+        @user.save
+      end
+      flash[:notice] = "編集完了しました"
+      redirect_to("/users/#{@user.id}")
+    else
+      render("users/edit")
+    end
+  end
+
+  def password_reset
+    @user = User.new
+  end
+
+  def password_update
+    @user = User.find_by(id: @current_user.id)
+    if params[:new_password] && @user.authenticate(params[:current_password])
+      @user.password = params[:new_password]
+      if @user.save
+        flash[:notice] = "パスワードを再設定しました"
+        redirect_to("/users/#{@user.id}")
+      else
+        render("/users/password_reset")
+      end
+    else
+      @error_message = "パスワードが間違っているか、空です"
+      render("/users/password_reset")
+    end
+  end
+
 end

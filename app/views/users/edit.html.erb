@@ -1,0 +1,23 @@
+<div class="main users-edit">
+  <div class="container">
+    <div class="form-heading">ユーザー情報の編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+            <% @user.errors.full_messages.each do |message| %>
+              <%= message %>
+            <% end %>
+            <p>ショップ名</p>
+            <input name="name" value=<%= @user.username %>>
+            <p>メールアドレス</p>
+            <input name="email" value="<%= @user.email %>">
+            <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %>
+            <p>アイコン</p>
+            <input name="icon" type="file">
+            <%= link_to("パスワードのリセット", "/users/#{@user.id}/password_reset") %>
+            <input type="submit" value="登録">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
