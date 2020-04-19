@@ -20,7 +20,7 @@
         <%= link_to("マイページ編集", "/shops/#{params[:id]}/content_edit") %>
       <% end %>
     </div>
-    <%= @shop.content %>
+    <%= markdown(@shop.content) %>
     <div class="review">
       <div class="review-form">
         <%= form_with :url => {controller:"shops", action:"add_review"} do |f| %>
