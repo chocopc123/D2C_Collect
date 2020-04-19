@@ -1,0 +1,21 @@
+<div class="main shops-content_edit">
+  <div class="container">
+    <h1 class="form-heading">ショップページの編集</h1>
+    <div class="form">
+      <div class="form-body">
+        <%= form_tag("/shops/create") do %>
+          <% @shop.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            <div>
+          <% end %>
+        <% end %>
+        <%= form_with :url => {controller:"shops", action:"content_update"} do |f| %>
+          <p>ショップページ内容 <span>[Markdown記法可]</span></p>
+          <%= f.text_area :content, :size=>"40x25" %>
+          <%= f.submit "保存" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

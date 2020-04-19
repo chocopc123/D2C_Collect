@@ -211,4 +211,18 @@ class ShopsController < ApplicationController
     flash[:notice] = "レビューを削除しました"
     redirect_to("/shops/#{params[:id]}")
   end
+
+  def content_edit
+    @shop = Shop.new
+  end
+
+  def content_update
+    @shop = Shop.find_by(id: params[:id])
+    @shop.content = params[:content]
+    if @shop.save
+      flash[:notice] = "ショップページを編集しました。"
+    end
+    redirect_to("/shops/#{params[:id]}")
+  end
+
 end

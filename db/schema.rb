@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_061819) do
+ActiveRecord::Schema.define(version: 2020_04_19_113339) do
 
   create_table "admins", force: :cascade do |t|
     t.string "admin_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_061819) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "content"
     t.index ["reset_password_token"], name: "index_shops_on_reset_password_token", unique: true
   end
 

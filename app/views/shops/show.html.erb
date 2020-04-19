@@ -17,18 +17,20 @@
         <%= link_to("削除", "/shops/#{@shop.id}/destroy", {method: "post"}) %>
         <%= link_to("ジャンル追加", "/shops/#{params[:id]}/add_genre") %>
         <%= link_to("ジャンル削除", "/shops/#{params[:id]}/remove_genre") %>
+        <%= link_to("マイページ編集", "/shops/#{params[:id]}/content_edit") %>
       <% end %>
     </div>
+    <%= @shop.content %>
     <div class="review">
       <div class="review-form">
         <%= form_with :url => {controller:"shops", action:"add_review"} do |f| %>
-          <h2>レビュー投稿</h2>
+          <h3>レビュー投稿</h3>
           <%= f.text_area :content, :size=>"40x5" %>
-          <%= f.submit %>
+          <%= f.submit "投稿" %>
         <% end %>
       </div>
       <div class="review-show">
-        <h2>レビュー一覧</h2>
+        <h3>レビュー一覧</h3>
         <% @reviews.each do |review| %>
           <li>
             <%= User.find_by(id:review.user_id).username + ":" %>
