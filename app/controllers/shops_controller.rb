@@ -225,4 +225,24 @@ class ShopsController < ApplicationController
     redirect_to("/shops/#{params[:id]}")
   end
 
+  def add_item
+  end
+
+  def create_item
+    @item = Item.new(shop_id: params[:id], name: params[:name], content: params[:content], icon_name: "default_icon.jpg")
+    if @item.save
+      if params[:icon]
+        @item.icon_name = "#{@item.id}.jpg"
+        icon = params[:icon]
+        File.binwrite("public/item_icons/#{@item.icon_name}", icon.read)
+        @item.save
+      end
+      flash[:notice] = "商品を登録しました。"
+      redirect_to("/shops/#{params[:id]}/add_item")
+    else
+      @error_message = "商品名が空か不正な名前です。"
+      render("shops/add_item")
+    end
+  end
+
 end

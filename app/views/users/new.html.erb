@@ -15,9 +15,10 @@
           <input name="email" value="<%= @user.email %>">
           <p>パスワード　<span>[必須][ログイン用]</span></p>
           <input name="password" type="password" value="<%= @user.password %>">
-          <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %>
           <p>アイコン</p>
           <input name="icon" type="file">
+          
+          <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %>
           <input type="submit" value="登録">
         <% end %>
       </div>

@@ -13,10 +13,10 @@
             <input name="url" value=<%= @shop.url %>>
             <p>メールアドレス</p>
             <input name="email" value="<%= @shop.email %>">
-            <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %>
             <p>アイコン</p>
             <input name="icon" type="file">
-            <%= link_to("パスワードのリセット", "/shops/#{@shop.id}/password_reset") %><br>
+            <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %> <br>
+            <%= link_to("パスワードのリセット", "/shops/#{@shop.id}/password_reset") %> <br>
             <%= link_to("削除", "/shops/#{@shop.id}/destroy", {method: "post"}) %>
             <input type="submit" value="登録">
         <% end %>
