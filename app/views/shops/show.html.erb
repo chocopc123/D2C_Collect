@@ -13,11 +13,8 @@
         <% end %>
       </ul>
       <% if @current_shop && @current_shop.id == params[:id].to_i || session[:admin] %>
-        <%= link_to("編集", "/shops/#{@shop.id}/edit") %>
-        <%= link_to("削除", "/shops/#{@shop.id}/destroy", {method: "post"}) %>
-        <%= link_to("ジャンル追加", "/shops/#{params[:id]}/add_genre") %>
-        <%= link_to("ジャンル削除", "/shops/#{params[:id]}/remove_genre") %>
-        <%= link_to("マイページ編集", "/shops/#{params[:id]}/content_edit") %>
+        <%= link_to("情報編集", "/shops/#{@shop.id}/edit") %>
+        <%= link_to("ショップページ編集", "/shops/#{params[:id]}/content_edit") %>
       <% end %>
     </div>
   </div>
