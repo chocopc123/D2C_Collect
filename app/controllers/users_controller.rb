@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, {only: [:edit, :logout]}
-  before_action :ensure_correct_user, {only: [:edit]}
+  before_action :authenticate_user, {only: [:logout]}
+  before_action :ensure_correct_user, {only: [:edit, :update, :password_reset, :password_update]}
 
   def ensure_correct_user
     if @current_user && @current_user.id != params[:id].to_i

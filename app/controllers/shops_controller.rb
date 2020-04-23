@@ -1,8 +1,13 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update, :logout]}
-  before_action :ensure_correct_shop, {only: [:edit, :update, :destroy, :password_reset, :password_update]}
-  before_action :authenticate_user, {only: [:add_review, :remove_review]}
+  before_action :authenticate_shop, {only: [:logout]}
+  before_action :ensure_correct_shop, {only: [:edit, :update, :destroy,
+    :password_reset, :password_update, :add_genre, :remove_genre,
+    :genre_destroy, :content_edit, :content_update, :add_item, :create_item,
+    :show_item, :destroy_item, :edit_item, :update_item]}
+
+  before_action :authenticate_user, {only: [:add_review]}
   before_action :ensure_correct_user, {only: [:remove_review]}
+
   before_action :set_search_genre
 
   protect_from_forgery except: :index
