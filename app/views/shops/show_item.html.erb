@@ -1,4 +1,4 @@
-<div class="main shops-remove_item">
+<div class="main shops-show_item">
   <div class="container">
     <% if @items %>
       <% @items.each do |item| %>
@@ -8,7 +8,8 @@
               </div>
               <div class="shop-right">
                 <%= link_to(item.name, "/shops/#{item.id}") %>
-                <%= link_to("削除", "/shops/#{params[:id]}/#{item.id}/destroy_item", {method: "post"}) %>
+                <%= link_to("編集", "/shops/#{params[:id]}/#{item.id}/edit_item", {class: "link"}) %>
+                <%= link_to("削除", "/shops/#{params[:id]}/#{item.id}/destroy_item", {method: "post", class: "link"}) %>
               </div>
           </div>
       <% end %>
