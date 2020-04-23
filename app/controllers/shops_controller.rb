@@ -245,7 +245,7 @@ class ShopsController < ApplicationController
     end
   end
 
-  def remove_item
+  def show_item
     @items = Item.where(shop_id: params[:id])
   end
 
@@ -253,7 +253,29 @@ class ShopsController < ApplicationController
     @item = Item.find_by(id: params[:item_id])
     @item.destroy
     flash[:notice] = "商品を削除しました。"
-    redirect_to("/shops/#{params[:id]}/remove_item")
+    redirect_to("/shops/#{params[:id]}/show_item")
+  end
+
+  def edit_item
+    @item = Item.find_by(id: params[:item_id])
+  end
+
+  def update_item
+    @item = Item.find_by(id: params[:item_id])
+    @item.name = params[:name]
+    @item.content = params[:content]
+    if @item.save
+      if params[:icon]
+        @item.icon_name = "#{@item.id}.jpg"
+        icon = params[:icon]
+        File.binwrite("public/item_icons/#{@item.icon_name}", icon.read)
+        @item.save
+      end
+      flash[:notice] = "編集完了しました"
+      redirect_to("/shops/#{params[:id]}/show_item")
+    else
+      render("shops/edit")
+    end
   end
 
 end
