@@ -245,4 +245,15 @@ class ShopsController < ApplicationController
     end
   end
 
+  def remove_item
+    @items = Item.where(shop_id: params[:id])
+  end
+
+  def destroy_item
+    @item = Item.find_by(id: params[:item_id])
+    @item.destroy
+    flash[:notice] = "商品を削除しました。"
+    redirect_to("/shops/#{params[:id]}/remove_item")
+  end
+
 end

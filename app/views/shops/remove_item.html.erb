@@ -1,0 +1,17 @@
+<div class="main shops-remove_item">
+  <div class="container">
+    <% if @items %>
+      <% @items.each do |item| %>
+          <div class="shops-index-item">
+              <div class="shop-left">
+                <img src="<%= "/item_icons/#{item.icon_name}" %>">
+              </div>
+              <div class="shop-right">
+                <%= link_to(item.name, "/shops/#{item.id}") %>
+                <%= link_to("削除", "/shops/#{params[:id]}/#{item.id}/destroy_item", {method: "post"}) %>
+              </div>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

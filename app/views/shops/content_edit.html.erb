@@ -13,7 +13,7 @@
         <%= link_to("ジャンル追加", "/shops/#{params[:id]}/add_genre", {class: "link"}) %>
         <%= link_to("ジャンル削除", "/shops/#{params[:id]}/remove_genre", {class: "link"}) %> <br>
         <%= link_to("商品追加", "/shops/#{params[:id]}/add_item", {class: "link"}) %>
-        <%= link_to("商品削除", "/shops/#{params[:id]}/destroy_item", {class: "link"}) %>
+        <%= link_to("商品削除", "/shops/#{params[:id]}/remove_item", {class: "link"}) %>
         <%= form_with :url => {controller:"shops", action:"content_update"} do |f| %>
           <p>ショップページ内容 <span>[Markdown記法可]</span></p>
           <%= f.text_area :content, :size=>"40x25" %>
