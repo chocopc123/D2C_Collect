@@ -66,6 +66,7 @@ class ShopsController < ApplicationController
     @shop = Shop.find_by(id: params[:id])
     @shop_genres = ShopsGenre.where(shop_id: @shop.id)
     @reviews = Review.where(shop_id: @shop.id)
+    @items = Item.where(shop_id: @shop.id)
   end
 
   def create

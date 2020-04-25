@@ -185,6 +185,17 @@
     background-color: white;
   }
 
+  .show-item {
+    width: 25%;
+    background-color: white;
+    border: solid 5px;
+    float: left;
+  }
+
+  .show-item img {
+    width: 90%;
+  }
+
   /* shops/new ================================ */
   .shops-new textarea {
     font-size: 20px;
