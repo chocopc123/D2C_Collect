@@ -25,20 +25,26 @@
   </div>
   <div class="container">
     <h3>商品一覧</h3>
-    <div class="show-item">
+    <div class="shop-item">
       <% @items.each do |item| %>
-        <img src="<%= "/item_icons/#{item.icon_name}" %>">
-        <%= item.name %> <br>
-        <%= item.content %>
+        <div class="shop-item-content">
+          <img src="<%= "/item_icons/#{item.icon_name}" %>">
+          <p><%= item.name %></p>
+          <p><%= item.content %></p>
+        </div>
       <% end %>
     </div>
   </div>
   <div class="container shop-review">
     <div class="shop-review-form">
       <%= form_with :url => {controller:"shops", action:"add_review"} do |f| %>
-        <h3>レビュー投稿</h3>
-        <%= f.text_area :content, :size=>"40x5" %>
-        <%= f.submit "投稿" %>
+        <% if @current_user %>
+          <h3>レビュー投稿</h3>
+        <% else %>
+          <h3>レビュー投稿 <span>[ログイン]</span></h3>
+          <%= f.text_area :content, :size=>"40x5" %>
+          <%= f.submit "投稿" %>
+        <% end %>
       <% end %>
     </div>
     <% if @reviews.count > 0 %>

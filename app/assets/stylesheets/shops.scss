@@ -185,15 +185,21 @@
     background-color: white;
   }
 
-  .show-item {
-    width: 25%;
+  .shop-item-content {
+    width: 31%;
+    height: 230px;
+    margin: 1% 1%;
     background-color: white;
     border: solid 5px;
     float: left;
   }
 
-  .show-item img {
-    width: 90%;
+  .shop-item-content img {
+    height: 50%
+  }
+
+  .shop-item-content p {
+    width: 95%;
   }
 
   /* shops/new ================================ */
