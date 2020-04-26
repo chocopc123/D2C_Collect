@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_084144) do
+ActiveRecord::Schema.define(version: 2020_04_26_082649) do
 
   create_table "admins", force: :cascade do |t|
     t.string "admin_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_084144) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "icon_name"
+    t.string "comment"
   end
 
   create_table "reviews", force: :cascade do |t|
