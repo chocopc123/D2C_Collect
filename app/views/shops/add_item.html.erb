@@ -1,22 +1,24 @@
 <div class="main shops-add_item">
-    <div class="container">
-        <h1 class="form-heading">商品の登録</h1>
-        <div class="form">
-            <div class="form-body">
-                <%= form_with :url => {controller:"shops", action:"create_item"} do |f| %>
-                    <div class="form-error">
-                        <%= @error_message %>
-                    </div>
-                    <p>商品名 <span>[必須]</span></p>
-                    <%= f.text_field :name %>
-                    <p>アイコン</p>
-                    <%= f.file_field :icon %>
-                    <p>商品説明</p>
-                    <%= f.text_area :content, :size=>"40x5" %>
-                    <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %>
-                    <%= f.submit "保存" %>
-                <% end %>
-            </div>
-        </div>
+  <div class="container">
+    <h1 class="form-heading">商品の登録</h1>
+    <div class="form">
+      <div class="form-body">
+        <%= form_with :url => {controller:"shops", action:"create_item"} do |f| %>
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
+          <p>商品名 <span>[必須]</span></p>
+          <%= f.text_field :name %>
+          <p>アイコン</p>
+          <%= f.file_field :icon %>
+          <p>ひとことコメント <span>[27文字以内]</span></p>
+          <%= f.text_field :comment %>
+          <p>商品説明</p>
+          <%= f.text_area :content, :size=>"40x5" %>
+          <%= link_to("placeholderを設定していない理由(外部サイト)", "https://u-site.jp/alertbox/form-design-placeholders", class: "link") %>
+          <%= f.submit "保存" %>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>

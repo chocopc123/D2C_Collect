@@ -235,7 +235,7 @@ class ShopsController < ApplicationController
   end
 
   def create_item
-    @item = Item.new(shop_id: params[:id], name: params[:name], content: params[:content], icon_name: "default_icon.jpg")
+    @item = Item.new(shop_id: params[:id], name: params[:name], content: params[:content], icon_name: "default_icon.jpg", comment: params[:comment])
     if @item.save
       if params[:icon]
         @item.icon_name = "#{@item.id}.jpg"
@@ -269,6 +269,7 @@ class ShopsController < ApplicationController
   def update_item
     @item = Item.find_by(id: params[:item_id])
     @item.name = params[:name]
+    @item.comment = params[:comment]
     @item.content = params[:content]
     if @item.save
       if params[:icon]
