@@ -23,18 +23,20 @@
       <%= markdown(@shop.content) %>
     <% end %>
   </div>
-  <div class="container">
-    <h3>商品一覧</h3>
-    <div class="shop-item">
-      <% @items.each do |item| %>
-        <div class="shop-item-content">
-          <img src="<%= "/item_icons/#{item.icon_name}" %>">
-          <p><%= item.name %></p>
-          <p><%= item.content %></p>
-        </div>
-      <% end %>
+  <% if @items.count > 0 %>
+    <div class="container">
+      <h3>商品一覧</h3>
+      <div class="shop-item">
+        <% @items.each do |item| %>
+          <div class="shop-item-content">
+            <img src="<%= "/item_icons/#{item.icon_name}" %>">
+            <p><%= item.name %></p>
+            <p><%= item.content %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="container shop-review">
     <div class="shop-review-form">
       <%= form_with :url => {controller:"shops", action:"add_review"} do |f| %>
