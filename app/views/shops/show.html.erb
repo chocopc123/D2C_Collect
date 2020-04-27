@@ -42,10 +42,12 @@
       <%= form_with :url => {controller:"shops", action:"add_review"} do |f| %>
         <% if @current_user %>
           <h3>レビュー投稿</h3>
+          <%= f.text_area :content, :size=>"40x5" %>
+          <%= f.submit "投稿" %>
         <% else %>
           <h3>レビュー投稿 <span>[ログイン]</span></h3>
           <%= f.text_area :content, :size=>"40x5" %>
-          <%= f.submit "投稿" %>
+          <%= f.submit "ログイン" %>
         <% end %>
       <% end %>
     </div>
