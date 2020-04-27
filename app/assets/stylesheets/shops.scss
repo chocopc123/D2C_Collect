@@ -216,6 +216,7 @@
 
   .shop-review-content {
     background-color: white;
+    box-shadow: 0 2px 6px #c1ced7;
     display: table;
     width: 100%;
     padding: 10px 10px;
@@ -230,7 +231,13 @@
 
   .shop-review-content p {
     vertical-align: middle;
+    width: 90%;
     display: table-cell;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .shop-review-content a {
   }
 
   /* shops/new ================================ */
