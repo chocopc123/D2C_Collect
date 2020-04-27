@@ -53,13 +53,14 @@
       <div class="shop-review-show">
         <h3>レビュー一覧</h3>
         <% @reviews.each do |review| %>
-          <li>
-            <%= User.find_by(id:review.user_id).username + ":" %>
-            <%= review.content %>
+          <% user = User.find_by(id:review.user_id) %>
+          <div class="shop-review-content">
+            <img src="<%= "/user_icons/#{user.icon_name}" %>">
+            <p><%= user.username + ": " + review.content %></p>
             <% if @current_user && @current_user.id == review.user_id || session[:admin] %>
               <%= link_to("削除", "/shops/#{@shop.id}/#{review.user_id}/#{review.id}/remove_review", {method: "post"}) %>
             <% end %>
-          </li>
+          </div>
         <% end %>
       </div>
     <% end %>
